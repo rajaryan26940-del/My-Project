@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdaptiveAI — Self-Learning Autonomous AI Agent</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Top Navigation Header -->
+        <header class="app-header">
+            <div class="logo-group">
+                <div class="logo-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 17L12 22L22 17" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 12L12 17L22 12" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <h1>Adaptive<span>AI</span></h1>
+                    <span class="badge-subtitle">Self-Learning Autonomous Agent System</span>
+                </div>
+            </div>
+
+            <nav class="nav-tabs">
+                <button class="nav-tab active" data-tab="tab-studio">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    Task Studio
+                </button>
+                <button class="nav-tab" data-tab="tab-analytics">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                    Learning Dashboard
+                </button>
+                <button class="nav-tab" data-tab="tab-episodes">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                    Episodic Memory
+                </button>
+                <button class="nav-tab" data-tab="tab-semantic">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                    Semantic KB
+                </button>
+            </nav>
+
+            <div class="header-actions">
+                <button id="btn-trigger-retrain" class="btn btn-secondary">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                    Retrain ML Model
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content View Area -->
+        <main class="main-content">
+
+            <!-- TAB 1: TASK STUDIO -->
+            <section id="tab-studio" class="tab-page active">
+                <div class="studio-grid">
+                    <!-- Left Input Panel -->
+                    <div class="card input-panel">
+                        <div class="card-header">
+                            <h3>Execute Task Goal</h3>
+                            <span class="status-indicator live">Ready</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="goal-input">Enter Goal Prompt:</label>
+                            <textarea id="goal-input" placeholder="e.g. Write a Python function to compute the Fibonacci sequence up to N terms and sort the array..." rows="4"></textarea>
+                        </div>
+
+                        <div class="sample-prompts">
+                            <span class="prompt-label">Quick Prompts:</span>
+                            <button class="chip-prompt" data-prompt="Write a Python script to calculate Fibonacci sequence and sort prime numbers up to 50">Coding</button>
+                            <button class="chip-prompt" data-prompt="Calculate 25 * 14 + (150 / 3) ^ 2 using exact arithmetic">Math</button>
+                            <button class="chip-prompt" data-prompt="Search latest concepts on Multi-Armed Bandit algorithms and ReAct framework">Research</button>
+                            <button class="chip-prompt" data-prompt="Transform list of numbers [64, 34, 25, 12, 22] and calculate mean, min, max statistics">Data Analysis</button>
+                        </div>
+
+                        <div class="form-row margin-top">
+                            <div class="form-group flex-1">
+                                <label for="strategy-override">Strategy Selection:</label>
+                                <select id="strategy-override">
+                                    <option value="">Auto (ML Model + Bandit UCB1)</option>
+                                    <option value="DirectExecution">DirectExecution</option>
+                                    <option value="ReActReasoning">ReActReasoning</option>
+                                    <option value="DecompositionPipeline">DecompositionPipeline</option>
+                                    <option value="ToolHeavyPipeline">ToolHeavyPipeline</option>
+                                    <option value="IterativeRefinement">IterativeRefinement</option>
+                                </select>
+                            </div>
+                            <button id="btn-execute" class="btn btn-primary btn-large">
+                                <span>Run Task</span>
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right Visualizer Stream Panel -->
+                    <div class="card stream-panel">
+                        <div class="card-header">
+                            <h3>Continuous Learning Loop Visualizer</h3>
+                            <div id="execution-badge" class="badge badge-idle">Idle</div>
+                        </div>
+
+                        <div id="visualizer-content" class="visualizer-content">
+                            <div class="empty-state">
+                                <div class="empty-icon">⚡</div>
+                                <h4>No Active Execution</h4>
+                                <p>Submit a goal prompt to watch the real-time agent learning pipeline step through Task Analysis, Strategy Selection, Tool Execution, and Experience Logging.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 2: LEARNING DASHBOARD -->
+            <section id="tab-analytics" class="tab-page">
+                <!-- KPI Summary Cards -->
+                <div class="kpi-grid">
+                    <div class="kpi-card card">
+                        <div class="kpi-label">Total Tasks Executed</div>
+                        <div id="kpi-total-tasks" class="kpi-value">0</div>
+                        <div class="kpi-foot">Continuous Experience Database</div>
+                    </div>
+                    <div class="kpi-card card">
+                        <div class="kpi-label">Overall Success Rate</div>
+                        <div id="kpi-success-rate" class="kpi-value">0.0%</div>
+                        <div class="kpi-foot">Validated Step Completion</div>
+                    </div>
+                    <div class="kpi-card card">
+                        <div class="kpi-label">Mean Reward Score</div>
+                        <div id="kpi-mean-reward" class="kpi-value">0.00</div>
+                        <div class="kpi-foot">R = Success + Quality - Latency - Cost</div>
+                    </div>
+                    <div class="kpi-card card">
+                        <div class="kpi-label">ML Model Status</div>
+                        <div id="kpi-ml-status" class="kpi-value text-sm">Active</div>
+                        <div id="kpi-ml-accuracy" class="kpi-foot">Scikit-Learn Classifier</div>
+                    </div>
+                </div>
+
+                <!-- Charts Grid -->
+                <div class="charts-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Learning Progression Curve</h3>
+                            <span class="card-subtitle">Success Rate & Mean Reward Over Time</span>
+                        </div>
+                        <div class="chart-wrapper">
+                            <canvas id="chart-learning-curve"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Strategy Selection Distribution</h3>
+                            <span class="card-subtitle">ML & Bandit Choice Mix</span>
+                        </div>
+                        <div class="chart-wrapper">
+                            <canvas id="chart-strategy-dist"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 3: EPISODIC MEMORY INSPECTOR -->
+            <section id="tab-episodes" class="tab-page">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Episodic Memory Experience Store</h3>
+                        <button id="btn-refresh-episodes" class="btn btn-secondary btn-sm">Refresh Logs</button>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Task ID</th>
+                                    <th>Goal Prompt</th>
+                                    <th>Domain</th>
+                                    <th>Complexity</th>
+                                    <th>Strategy Chosen</th>
+                                    <th>Selection Mode</th>
+                                    <th>Success</th>
+                                    <th>Execution Time</th>
+                                    <th>Reward</th>
+                                    <th>User Feedback</th>
+                                </tr>
+                            </thead>
+                            <tbody id="episodes-table-body">
+                                <tr>
+                                    <td colspan="10" class="text-center">Loading episodic memories...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 4: SEMANTIC KNOWLEDGE BASE -->
+            <section id="tab-semantic" class="tab-page">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Semantic Memory & Solution Templates</h3>
+                        <div class="search-box">
+                            <input type="text" id="semantic-search-input" placeholder="Search templates by keyword or domain...">
+                            <button id="btn-semantic-search" class="btn btn-secondary btn-sm">Search</button>
+                        </div>
+                    </div>
+                    <div id="semantic-kb-container" class="semantic-grid margin-top">
+                        <!-- Templates rendered dynamically -->
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
