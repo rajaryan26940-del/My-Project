@@ -1,3 +1,7 @@
+<img width="1912" height="856" alt="Screenshot 2026-09-23 234821" src="https://github.com/user-attachments/assets/4a926347-e962-494d-a468-15c743458451" />
+<img width="1917" height="868" alt="Screenshot 2026-09-23 234841" src="https://github.com/user-attachments/assets/0d8b26d6-2e28-4a7e-893a-653781ee2b87" />
+<img width="1903" height="852" alt="Screenshot 2026-09-23 234901" src="https://github.com/user-attachments/assets/a6f705eb-dc31-4ea8-9621-e57103107b3b" />
+<img width="1915" height="870" alt="Screenshot 2026-09-23 234915" src="https://github.com/user-attachments/assets/5abdebd4-12e9-4375-b723-8872bba48fd6" />
 # AdaptiveAI — Self-Learning Autonomous Agent Framework
 
 AdaptiveAI is a self-learning autonomous agent system built in Python. It features episodic memory storage, self-evaluating execution rewards, dynamic strategy selection (balancing exploration and exploitation using ML models and contextual multi-armed bandit strategies), and an interactive web interface.
